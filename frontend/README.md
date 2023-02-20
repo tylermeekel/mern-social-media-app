@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Social Media App
+## Technologies Used
+- React for frontend
+- TailwindCSS for frontend styling
+- Axios to fetch data through the backend
+- MongoDB and MongoDB Atlas for database
+- Express.js/Node.js for backend routing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Current Implemented Features
+### Front End
+- Header (currently has unimplemented link to add new Post)
+- Home Page (loads all Posts from DB)
 
-## Available Scripts
+### Back End
+- Route to get all posts as a JSON object
+- Route to get individual post as a JSON object from id
+- Route to create individual post
+- Route to update individual post
+- Route to delete individual post
 
-In the project directory, you can run:
+### Database
+- Unfinished Post model implementation
 
-### `yarn start`
+## Future Planned Features
+### Front End
+- Form to create new posts
+- Ability to delete individual post
+- Ability to update individual post
+- Ability to view individual post in greater detail
+- Ability to like posts
+- Ability to comment (low priority)
+- Login form
+- Restricted access to delete, update through use of JWT
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Back End
+- CRUD setup for User model
+- Implement authentication (using bcrypt and JSON web tokens)
+- Restrict access to routes depending on authentication status
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Database
+- Finish Post model, adding userID field, likes, etc.
+- Create model for User
+- Potentially figure out how to integrate local hosting for MongoDB
