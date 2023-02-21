@@ -10,6 +10,7 @@
 ### Front End
 - Header (currently has unimplemented link to add new Post)
 - Home Page (loads all Posts from DB)
+- Create New Posts
 
 ### Back End
 - Route to get all posts as a JSON object
@@ -23,7 +24,6 @@
 
 ## Future Planned Features
 ### Front End
-- Form to create new posts
 - Ability to delete individual post
 - Ability to update individual post
 - Ability to view individual post in greater detail
