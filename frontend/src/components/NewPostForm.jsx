@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function AddNewForm({ handleExit, handleSubmit }) {
+export default function NewPostForm({ handleExit, handleSubmit }) {
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -15,7 +15,7 @@ export default function AddNewForm({ handleExit, handleSubmit }) {
 
     return (
         <div className=" w-screen h-screen z-40 bg-slate-800 bg-opacity-90 fixed flex items-center justify-center">
-            <i className="fa-solid fa-xmark z-50 text-white text-4xl fixed top-0 left-0 m-4 cursor-pointer hover:text-red-500" onClick={handleExit}></i>
+            <i className="fa-solid fa-xmark z-50 text-white text-4xl fixed top-0 right-0 m-7 cursor-pointer hover:text-red-500" onClick={handleExit}></i>
             <div className=" xs:w-screen xs:h-screen lg:w-3/4 lg:h-4/6 xl:w-2/3 xl:h-3/5 bg-white rounded-md flex flex-col items-center justify-center">
                 <h1 className="text-4xl font-medium">Create New Post</h1>
                 <form className=" flex items-center flex-col p-4 gap-2 w-5/6 h-5/6">

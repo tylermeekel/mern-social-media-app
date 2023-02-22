@@ -11,6 +11,7 @@
 - Header (currently has unimplemented link to add new Post)
 - Home Page (loads all Posts from DB)
 - Create New Posts
+- Delete Posts
 
 ### Back End
 - Route to get all posts as a JSON object
@@ -24,7 +25,6 @@
 
 ## Future Planned Features
 ### Front End
-- Ability to delete individual post
 - Ability to update individual post
 - Ability to view individual post in greater detail
 - Ability to like posts
