@@ -12,6 +12,9 @@ app.use(express.json());
 //Post Routes
 app.use('/api/posts', require('./routes/postRoutes'));
 
+//User Routes
+app.use('/api/users', require('./routes/userRoutes'))
+
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
