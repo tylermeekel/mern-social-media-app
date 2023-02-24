@@ -61,7 +61,8 @@ const deletePost = async (req, res) => {
     try {
         const id = req.params.id;
         const post = await Post.findById(id);
-        
+        post.delete();
+
         if(post.user_id !== req.user){
             throw Error("This is not your post to delete")
         }

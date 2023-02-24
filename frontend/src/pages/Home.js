@@ -49,7 +49,7 @@ function Home() {
   return (
     <div>
       {addingNewForm && <NewPostForm handleExit={closeAddingForm} handleSubmit={submitNewPost}/>}
-      <main className="mx-4 md:mx-48 xl:mx-96 flex flex-col items-center pb-12">
+      <main className="mx-4 md:mx-48 xl:mx-60 flex flex-col items-center pb-12 ">
         {user && <i className="fa-solid fa-circle-plus text-4xl cursor-pointer hover:text-green-500 fixed bottom-0 right-0 m-7" onClick={openAddingForm}></i>}
         <div className="posts w-full flex flex-col items-center">
           {posts.map(post => (
