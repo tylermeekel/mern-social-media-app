@@ -4,19 +4,22 @@ const router = express.Router();
 //Import controller functions
 const { getAllPosts, getPost, createPost, updatePost, deletePost } = require('../controllers/postController');
 
+//Import middleware
+const requireAuth = require('../middleware/requireAuth');
+
 //Get all posts
 router.get('/', getAllPosts);
 
 //Get one post
 router.get('/:id', getPost);
 
-//Create post
-router.post('/', createPost);
+//Create post, guarded by auth
+router.post('/', requireAuth, createPost);
 
-//Update post
-router.put('/:id', updatePost);
+//Update post, guarded by auth
+router.put('/:id', requireAuth, updatePost);
 
-//Delete post
-router.delete('/:id', deletePost);
+//Delete post, guarded by auth
+router.delete('/:id', requireAuth, deletePost);
 
 module.exports = router;

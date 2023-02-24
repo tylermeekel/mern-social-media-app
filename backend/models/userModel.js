@@ -24,14 +24,11 @@ const userSchema = new Schema({
 userSchema.statics.signup = async function(username, password) {
     
     //Input validation
-    //Check if username sent
-    if(!username){
-        throw Error("Must fill in the username field.")
+    //Check if username and password sent
+    if(!username || !password){
+        throw Error("Must fill in all fields.")
     }
-    //Check if password sent
-    if(!password){
-        throw Error("Must fill in the password field.")
-    }
+    
 
     //Check for alphanumeric username
     if(!validator.isAlphanumeric(username, 'en-US', {
@@ -65,7 +62,34 @@ userSchema.statics.signup = async function(username, password) {
 
     const user = await this.create({ username, password: hashedPassword });
 
+    console.log(user, "SIGNUP")
     return user;
+}
+
+//Login static method
+userSchema.statics.login = async function(username, password) {
+    if(!username || !password){ 
+        throw Error("All fields must be filled.");
+    }
+
+    //Find user in DB
+    const user = await this.findOne({ username });
+
+    //Check that user actually exists in DB
+    if(!user) {
+        throw Error("Incorrect username or password.");
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+
+    if(!match){
+        throw Error("Incorrect username or password.");
+    }
+
+
+    console.log(user, "LOGIN")
+    return user;
+
 }
 
 

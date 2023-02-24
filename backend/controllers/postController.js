@@ -28,10 +28,11 @@ const getPost = async (req, res) => {
 const createPost = async (req, res) => {
     try {
         const { title, content } = req.body;
+        const user_id = req.user;
         if(!title || !content){
             throw Error('Request must contain all required fields!')
         }
-        const post = await Post.create({ title, content });
+        const post = await Post.create({ title, content, user_id });
         res.status(200).json({post});
     } catch (error) {
         res.status(400).json({error: error.message});

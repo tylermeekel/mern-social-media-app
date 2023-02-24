@@ -1,58 +1,31 @@
-import { useEffect, useState } from "react";
-import Header from "./components/Header";
-import NewPostForm from "./components/NewPostForm";
-import PostPreview from "./components/PostPreview";
-import axios from 'axios';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext';
 
-function App() {
+//pages + components
+import Home from "./pages/Home";
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Header from "./components/Header"
 
-  const [addingNewForm, setAddingNewForm] = useState(false);
-  const [posts, setPosts] = useState([]);
 
-  const deletePost = (id) => {
-    axios.delete('/api/posts/' + id)
-      .then((res) => setPosts(oldPosts => {
-        console.log(res.data);
-        return oldPosts.filter(post => post._id !== res.data._id)
-      }))
-  }
 
-  const submitNewPost = (title, content) => {
-    axios.post('/api/posts', {
-      title, content
-    }).then((res) => setPosts(old => {
-      return [res.data.post, ...old]
-    }))
-    setAddingNewForm(false);
-  }
-
-  const closeAddingForm = () => {
-    setAddingNewForm(false);
-  }
-  
-  const openAddingForm = () => {
-    setAddingNewForm(true);
-  }
-
-  useEffect(() => {
-    axios.get("/api/posts")
-      .then((res) => setPosts(res.data.posts))
-  }, [])
+const App = () => {
+  const {user} = useAuthContext();
 
   return (
-    <div>
-      {addingNewForm && <NewPostForm handleExit={closeAddingForm} handleSubmit={submitNewPost}/>}
-      <Header addNewPost={openAddingForm}/>
-      <main className="mx-4 md:mx-48 xl:mx-96 flex flex-col items-center pb-12">
-        <div className="posts w-full flex flex-col items-center">
-          {posts.map(post => (
-            <PostPreview post={post} key={post._id} deleteFunction={deletePost} />
-          ))}
-        </div>
-      </main>
+    <div id='App' className='flex flex-col h-screen w-screen'>
+      <BrowserRouter>
+        <Header />
+        <div className='flex-1'>
+          <Routes>
+            <Route path='/' element={user ? <Home /> : <Navigate to='/login'/>} />
+            <Route path='/login' element={!user ? <Login /> : <Navigate to="/"/>} />
+            <Route path='/signup' element={!user ? <Signup /> : <Navigate to="/"/>} />
+          </Routes>
+        </div>   
+      </BrowserRouter>
     </div>
-    
-  );
+  )
 }
 
-export default App;
+export default App

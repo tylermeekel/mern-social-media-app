@@ -1,6 +1,14 @@
+import { useAuthContext } from "../hooks/useAuthContext";
+
 export default function PostPreview({ post, deleteFunction }) {
 
+    const { user } = useAuthContext();
+
     const handleDelete = (e) => {
+        if(!user){
+            return
+        }
+
         e.preventDefault();
         deleteFunction(post._id)
     }
@@ -21,7 +29,7 @@ export default function PostPreview({ post, deleteFunction }) {
             </div>
             <br />
             <p className="line-clamp-6">{post.content}</p>
-            <p>{post._id}</p>
+            {post.user_id}
         </div>
         
     )
