@@ -24,7 +24,7 @@ export default function PostPreview({ post, deleteFunction }) {
                 <h1 className=" text-3xl">{post.title}</h1>
                 <div className="flex gap-3">
                     {/*<i class="fa-solid fa-pen-clip text-2xl hover:text-blue-500 cursor-pointer"></i>*/}
-                    <i className="fa-solid fa-trash-can text-2xl hover:text-red-500 cursor-pointer" onClick={handleDelete}></i>
+                    {user.user_id === post.user_id && <i className="fa-solid fa-trash-can text-2xl hover:text-red-500 cursor-pointer" onClick={handleDelete}></i>}
                 </div>
             </div>
             <br />

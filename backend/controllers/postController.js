@@ -44,10 +44,12 @@ const updatePost = async (req, res) => {
     try {
         const { title, content } = req.body;
         const id = req.params.id;
+        const user_id = req.user;
+
         if(!title || !content){
             throw Error('Request must contain all required fields!')
         }
-        const post = await Post.findByIdAndUpdate(id, { title, content });
+        const post = await Post.findByIdAndUpdate(id, { title, content, user_id });
         res.status(200).json(post);
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -58,7 +60,11 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
     try {
         const id = req.params.id;
-        const post = await Post.findByIdAndDelete(id);
+        const post = await Post.findById(id);
+        
+        if(post.user_id !== req.user){
+            throw Error("This is not your post to delete")
+        }
         res.status(200).json(post);
     } catch (error) {
         res.status(400).json({error: error.message});
