@@ -20,7 +20,7 @@ export default function PostView(){
         }
         getData()
         
-    }, [])
+    }, [id])
 
     return (
         <div className=" flex h-full w-full flex-col items-center">
