@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 
@@ -8,6 +9,9 @@ const PORT = process.env.PORT || 5000;
 
 //Middleware for body processing
 app.use(express.json());
+
+//Fix CORS errors
+app.use(cors());
 
 //Post Routes
 app.use('/api/posts', require('./routes/postRoutes'));
