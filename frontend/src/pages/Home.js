@@ -13,7 +13,7 @@ function Home() {
 
   const deletePost = (id) => {
     if(user) {
-        axios.delete('/api/posts/' + id, { headers: { "Authorization": `Bearer ${user.token}`}})
+        axios.delete('https://whale-app-u54b4.ondigitalocean.app/api/posts/' + id, { headers: { "Authorization": `Bearer ${user.token}`}})
             .then((res) => setPosts(oldPosts => {
                 console.log(res.data);
                 return oldPosts.filter(post => post._id !== res.data._id)
@@ -24,7 +24,7 @@ function Home() {
 
   const submitNewPost = (title, content) => {
     if(user){
-        axios.post('/api/posts', {title, content}, { headers: { "Authorization": `Bearer ${user.token}` }})
+        axios.post('https://whale-app-u54b4.ondigitalocean.app/api/posts', {title, content}, { headers: { "Authorization": `Bearer ${user.token}` }})
             .then((res) => setPosts(old => {
                 console.log(res);
                 return [res.data.post, ...old]
@@ -42,7 +42,7 @@ function Home() {
   }
 
   useEffect(() => {
-        axios.get("/api/posts")
+        axios.get("https://whale-app-u54b4.ondigitalocean.app/api/posts")
             .then((res) => setPosts(res.data.posts))   
   }, [])
 

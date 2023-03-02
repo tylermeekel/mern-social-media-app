@@ -9,11 +9,11 @@ export default function PostView(){
     
     useEffect(() => {
         const getData = async () => {
-            await axios.get(`/api/posts/${id}`)
+            await axios.get(`https://whale-app-u54b4.ondigitalocean.app/api/posts/${id}`)
                 .then(async (res) => {
                     setPost(res.data)
                     console.log(res)
-                    await axios.get(`/api/users/${res.data.user_id}`)
+                    await axios.get(`https://whale-app-u54b4.ondigitalocean.app/api/users/${res.data.user_id}`)
                         .then((userresponse) => setPostUsername(userresponse.data.username))
                 })
 
