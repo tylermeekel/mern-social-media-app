@@ -18,10 +18,10 @@ export default function Header() {
             </Link>
             <nav className=" flex">
                 {user ? 
-                <div>
-                    <button className="text-sm text-white bg-slate-900 p-2 rounded-md hover:bg-slate-800 m-4" onClick={handleLogout}>Logout</button>
+                <div className=" m-4">
+                    <button className="text-sm text-white bg-slate-900 p-2 rounded-md hover:bg-slate-800" onClick={handleLogout}>Logout</button>
                 </div> :
-                <div className="flex items-center gap-4">
+                <div className=" m-4 flex items-center gap-4">
                     <Link className="text-sm text-white bg-slate-900 p-2 rounded-md hover:bg-slate-800" to="/login">Login</Link>
                     <Link className="text-sm text-white bg-slate-900 p-2 rounded-md hover:bg-slate-800" to="/signup">Sign Up</Link>
                 </div>

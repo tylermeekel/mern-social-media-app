@@ -6,11 +6,7 @@ export default function PostView(){
     const { id } = useParams('');
     const [post, setPost] = useState('');
     const [postUsername, setPostUsername] = useState('');
-
-    const deletePost = () => {
-        
-    }
-
+    
     useEffect(() => {
         const getData = async () => {
             await axios.get(`/api/posts/${id}`)
